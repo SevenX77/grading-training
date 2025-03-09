@@ -1,11 +1,19 @@
 import Link from "next/link";
-import { getAllContent } from "@/lib/utils/mdx";
+import { getAllContent, getAllCategories } from "@/lib/utils/mdx";
 import { notFound } from "next/navigation";
 
 interface CategoryPageProps {
 	params: {
 		category: string;
 	};
+}
+
+export async function generateStaticParams() {
+	const categories = await getAllCategories();
+
+	return categories.map((category) => ({
+		category,
+	}));
 }
 
 export default async function CategoryPage({ params }: CategoryPageProps) {

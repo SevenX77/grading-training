@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getContentBySlug } from "@/lib/utils/mdx";
+import { getContentBySlug, getAllContent, getAllCategories } from "@/lib/utils/mdx";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import mdxComponents from "@/components/content/mdx-components";
 
@@ -9,6 +9,24 @@ interface ContentPageProps {
 		category: string;
 		slug: string;
 	};
+}
+
+export async function generateStaticParams() {
+	const categories = await getAllCategories();
+	const paths = [];
+
+	for (const category of categories) {
+		const contents = await getAllContent(category);
+
+		for (const content of contents) {
+			paths.push({
+				category,
+				slug: content.slug,
+			});
+		}
+	}
+
+	return paths;
 }
 
 export async function generateMetadata({ params }: ContentPageProps): Promise<Metadata> {

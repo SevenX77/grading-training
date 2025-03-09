@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Menu, Search } from "lucide-react";
 import { useState } from "react";
-import { ThemeToggle } from "@/components/theme-toggle";
+// import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function Header() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,7 +32,7 @@ export default function Header() {
 							<span className="sr-only">搜索</span>
 						</button>
 					</div>
-					<ThemeToggle />
+					{/* <ThemeToggle /> */}
 				</div>
 			</div>
 		</header>

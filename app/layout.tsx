@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../styles/globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
+// import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import Sidebar from "@/components/layout/sidebar";
@@ -18,16 +18,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html lang="zh-CN" suppressHydrationWarning>
 			<body className={inter.className}>
-				<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-					<div className="flex flex-col min-h-screen">
-						<Header />
-						<div className="flex-1 flex">
-							<Sidebar />
-							<main className="flex-1 pb-12 pt-24 md:pt-16">{children}</main>
-						</div>
-						<Footer />
+				{/* <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange> */}
+				<div className="flex flex-col min-h-screen">
+					<Header />
+					<div className="flex-1 flex">
+						<Sidebar />
+						<main className="flex-1 pb-12 pt-24 md:pt-16">{children}</main>
 					</div>
-				</ThemeProvider>
+					<Footer />
+				</div>
+				{/* </ThemeProvider> */}
 			</body>
 		</html>
 	);
